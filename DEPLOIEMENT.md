@@ -35,7 +35,7 @@ Comptez une demi-journée la première fois. Tout se fait depuis un navigateur, 
      ```sql
      update public.profiles set is_admin = true where email = 'remiapro@gmail.com';
      ```
-     Le résultat doit indiquer *1 row affected*.
+     Supabase répond *Success. No rows returned* : c’est normal. Pour vérifier, exécutez `select email, is_admin from public.profiles;` : votre adresse doit apparaître avec `true`.
 
 ## 3. Brancher les e-mails (Resend)
 
