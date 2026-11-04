@@ -1,0 +1,18 @@
+# La formule gratuite de Supabase met en pause un projet inactif pendant 7 jours.
+# Ce petit envoi quotidien garde la base éveillée, même hors saison.
+# À configurer une fois : GitHub > Settings > Secrets and variables > Actions >
+#   SUPABASE_URL et SUPABASE_PUBLISHABLE_KEY (les mêmes valeurs que sur Cloudflare).
+name: Garder la base active
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lire le catalogue
+        env:
+          URL: ${{ secrets.SUPABASE_URL }}
+          KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_ANON_KEY }}
+        run: curl -fsS "$URL/rest/v1/categories?select=id&limit=1" -H "apikey: $KEY" > /dev/null

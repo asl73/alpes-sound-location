@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+/*
+  Concept : la « fiche technique » d'un loueur de son et lumière.
+  Bandeaux nuit (en-tête, ouverture, pied de page) comme une salle avant le show,
+  pages claires et lisibles pour choisir son matériel, l'or réservé aux traits de lumière.
+  Une seule typographie, Archivo, en deux largeurs : étroite et grasse pour les titres,
+  normale pour le texte.
+*/
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url('./assets/fonts/archivo-wdth.woff2') format('woff2-variations'), url('./assets/fonts/archivo-wdth.woff2') format('woff2');
+}
+
+@theme {
+  --font-sans: 'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  --color-nuit: #2a0e1a;
+  --color-nuit-2: #391525;
+  --color-nuit-3: #52233a;
+  --color-bordeaux: #7a2540;
+  --color-bordeaux-2: #621c33;
+  --color-or: #b98a34;
+  --color-or-2: #d4aa5a;
+  --color-creme: #f5eae0;
+  --color-paper: #fbf7f3;
+  --color-ink: #23141a;
+  --color-muted: #6c5a61;
+  --color-line: #e8ddd4;
+  --color-line-2: #d6c5b9;
+
+  --color-ok: #2b6e4b;
+  --color-ok-bg: #e5f1e9;
+  --color-warn: #8f5509;
+  --color-warn-bg: #fbeed6;
+  --color-bad: #a3271f;
+  --color-bad-bg: #f8e2df;
+  --color-info: #284a74;
+  --color-info-bg: #e4ebf4;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 88px;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Bande d'encoche des téléphones : même couleur que l'en-tête */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 45;
+  background: var(--color-nuit);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--color-or-2);
+  color: var(--color-nuit);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-or);
+  outline-offset: 2px;
+}
+
+@utility display {
+  font-stretch: 68%;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+@utility condensed {
+  font-stretch: 78%;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility wrap {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  @media (width >= 48rem) {
+    padding-left: max(28px, env(safe-area-inset-left, 0px));
+    padding-right: max(28px, env(safe-area-inset-right, 0px));
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-[5px] px-5 text-[15px] font-semibold whitespace-nowrap transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-sm {
+    @apply min-h-9 px-3 text-sm;
+  }
+  .btn-primary {
+    @apply bg-bordeaux text-white hover:bg-bordeaux-2;
+  }
+  .btn-gold {
+    @apply bg-or text-nuit hover:bg-or-2;
+  }
+  .btn-outline {
+    @apply border border-line-2 bg-white text-ink hover:border-ink;
+  }
+  .btn-quiet {
+    @apply text-bordeaux hover:bg-creme;
+  }
+  .btn-dark {
+    @apply border border-nuit-3 text-creme hover:border-or hover:text-white;
+  }
+  .btn-danger {
+    @apply border border-bad/30 bg-white text-bad hover:bg-bad-bg;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-ink;
+  }
+  .hint {
+    @apply mt-1.5 text-[13px] leading-snug text-muted;
+  }
+  .input {
+    @apply min-h-11 w-full rounded-[5px] border border-line-2 bg-white px-3 text-[16px] text-ink transition-colors placeholder:text-muted/70 hover:border-muted focus:border-bordeaux focus:ring-2 focus:ring-bordeaux/15 focus:outline-none disabled:bg-paper;
+  }
+  textarea.input {
+    @apply py-2.5 leading-normal;
+  }
+
+  .panel {
+    @apply rounded-[8px] border border-line bg-white;
+  }
+
+  .link {
+    @apply font-semibold text-bordeaux underline decoration-bordeaux/30 underline-offset-[3px] hover:decoration-bordeaux;
+  }
+
+  .kicker {
+    @apply text-[13px] font-semibold text-or;
+  }
+}
+
+/* Visuel d'attente : un faisceau de lumière sur fond nuit, en attendant les vraies photos */
+.visual-placeholder {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgb(185 138 52 / 0.28), transparent 55%),
+    radial-gradient(90% 70% at 50% 110%, rgb(122 37 64 / 0.55), transparent 70%),
+    var(--color-nuit);
+}
+
+/* Le trait de crête qui devient une onde sonore, dans l'ouverture de la page d'accueil */
+.ridge-line {
+  stroke-dasharray: 2200;
+  stroke-dashoffset: 2200;
+  animation: draw 2.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
+}
+.ridge-wave {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: draw 1.6s cubic-bezier(0.65, 0, 0.35, 1) 1.5s forwards;
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ridge-line,
+  .ridge-wave {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.safe-bottom {
+  padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+}
+.safe-top {
+  padding-top: max(12px, env(safe-area-inset-top, 0px));
+}
+
+/* Mosaïque « Nos installations » : rangées de hauteur égale (une colonne × 4/3),
+   les photos larges couvrent deux colonnes sur la même hauteur. */
+.gallery {
+  container-type: inline-size;
+}
+.gallery-grid {
+  --cols: 2;
+  --gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  grid-auto-rows: calc((100cqw - (var(--cols) - 1) * var(--gap)) / var(--cols) * 4 / 3);
+  grid-auto-flow: row dense;
+  gap: var(--gap);
+}
+.gallery-wide {
+  grid-column: span 2;
+}
+@media (min-width: 768px) {
+  .gallery-grid {
+    --cols: 4;
+    --gap: 12px;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+}
+.toast-in {
+  animation: toast-in 0.18s ease-out;
+}

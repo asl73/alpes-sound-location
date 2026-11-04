@@ -1,0 +1,12 @@
+# Réglages des fonctions serveur. Le contrôle d'accès est fait dans le code de chaque fonction
+# (le webhook Stripe, lui, n'envoie pas de jeton Supabase).
+project_id = "alpes-sound-location"
+
+[functions.notify]
+verify_jwt = false
+
+[functions.create-deposit-checkout]
+verify_jwt = false
+
+[functions.stripe-webhook]
+verify_jwt = false

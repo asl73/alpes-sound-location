@@ -1,0 +1,967 @@
+{
+  "settings": {
+    "company": {
+      "name": "Alpes & Sound Location",
+      "owner": "Rémi Aguettaz",
+      "status": "Entrepreneur individuel",
+      "siret": "992 843 284 00017",
+      "address": "543 route du Marais",
+      "postal_code": "73800",
+      "city": "La Chavanne",
+      "phone": "07 67 70 64 53",
+      "email": "remiapro@gmail.com",
+      "vat_note": "TVA non applicable, art. 293 B du CGI",
+      "area": "Savoie, Isère et Haute-Savoie",
+      "mediator_name": "",
+      "mediator_url": ""
+    },
+    "booking": {
+      "deposit_percent": 30,
+      "caution_amount": 500,
+      "caution_method": "chèque non encaissé, rendu au retour du matériel",
+      "quote_validity_days": 7,
+      "min_notice_days": 2,
+      "max_custom_days": 30,
+      "max_pending_per_client": 5,
+      "day_label": "24 heures, du retrait au retour",
+      "weekend_label": "Du vendredi après-midi au lundi matin",
+      "response_delay": "sous 24 h",
+      "balance_note": "Le solde est à régler au plus tard le jour de l'installation ou du retrait.",
+      "cancellation_early": "Annulation plus de 7 jours avant l'événement : l'acompte est conservé ; si vous aviez réglé la totalité, le reste vous est remboursé.",
+      "cancellation_late": "Annulation moins de 7 jours avant l'événement : la totalité de la prestation est due.",
+      "custom_discount_percent": 10,
+      "custom_discount_min_items": 3
+    },
+    "annual_target": 9420,
+    "gallery": [
+      {
+        "src": "/photos/terrasse-montagnes.jpg",
+        "caption": "En terrasse, avec vue sur les montagnes",
+        "wide": true
+      },
+      {
+        "src": "/photos/soiree-fumee.jpg",
+        "caption": "Lumières et fumée pour la piste"
+      },
+      {
+        "src": "/photos/salle-poutres.jpg",
+        "caption": "Dans une salle aux poutres apparentes"
+      },
+      {
+        "src": "/photos/anniversaire-18-ans.jpg",
+        "caption": "Une soirée des 18 ans"
+      },
+      {
+        "src": "/photos/sono-1600w-salle-fete.jpg",
+        "caption": "La sono 1 600 W pour une fête en salle"
+      },
+      {
+        "src": "/photos/scene-fresque-large.jpg",
+        "caption": "Sur scène, devant une fresque alpine",
+        "wide": true
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "sono",
+      "name": "Sonorisation",
+      "description": "Enceintes, caissons et tables de mixage",
+      "icon": "speaker",
+      "sort": 1
+    },
+    {
+      "id": "dj",
+      "name": "DJ",
+      "description": "Régie tout-en-un pour mixer",
+      "icon": "disc",
+      "sort": 2
+    },
+    {
+      "id": "micros",
+      "name": "Micros",
+      "description": "Micros sans fil pour les discours et les animations",
+      "icon": "mic",
+      "sort": 3
+    },
+    {
+      "id": "eclairage",
+      "name": "Éclairage et effets",
+      "description": "Uplights, PAR LED, lyre, laser et fumée",
+      "icon": "light",
+      "sort": 4
+    },
+    {
+      "id": "accessoires",
+      "name": "Accessoires",
+      "description": "Pieds d'enceinte et câblage",
+      "icon": "cable",
+      "sort": 5
+    }
+  ],
+  "products": [
+    {
+      "id": "a5100000-0000-4000-8000-000000000001",
+      "slug": "sono-1600w-elokance",
+      "category_id": "sono",
+      "name": "Sono 1600 W Elokance",
+      "brand": "Elokance",
+      "model": null,
+      "summary": "Deux satellites et un caisson de basses : 1 600 W pour une soirée jusqu'à 100 personnes environ.",
+      "description": "Un système complet et rapide à installer pour les anniversaires, soirées et réceptions. Il se compose de deux satellites Elokance ELO 10C et d'un caisson de basses amplifié Elokance SUB15A, qui alimente les satellites : il suffit d'y brancher une table de mixage, un téléphone ou un ordinateur pour obtenir un son puissant et équilibré.",
+      "specs": [
+        {
+          "label": "Puissance",
+          "value": "800 W RMS (1 600 W crête)"
+        },
+        {
+          "label": "Satellites",
+          "value": "2 × Elokance ELO 10C"
+        },
+        {
+          "label": "Caisson de basses",
+          "value": "1 × Elokance SUB15A amplifié, 15 pouces"
+        },
+        {
+          "label": "Réponse en fréquence",
+          "value": "35 Hz à 19 kHz"
+        },
+        {
+          "label": "Entrées",
+          "value": "XLR et jack"
+        }
+      ],
+      "included": [
+        "2 pieds pour les satellites",
+        "2 câbles speakON",
+        "Câbles d'alimentation"
+      ],
+      "quantity": 1,
+      "price_24h": 80,
+      "price_weekend": 120,
+      "unit_label": "le système",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/sono-1600w-reception.jpg",
+        "/photos/elokance-elo10c.jpg",
+        "/photos/elokance-sub15a.jpg",
+        "/photos/sono-1600w-reception-2.jpg",
+        "/photos/sono-1600w-salle-fete.jpg"
+      ],
+      "visible": true,
+      "featured": true,
+      "sort": 1
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000002",
+      "slug": "enceinte-alto-ts410",
+      "category_id": "sono",
+      "name": "Enceinte Alto TS410",
+      "brand": "Alto Professional",
+      "model": "TS410",
+      "summary": "Enceinte active 10 pouces de 2 000 W crête, avec Bluetooth et mixeur 3 voies intégré.",
+      "description": "Légère et puissante, la TS410 s'utilise seule pour un discours, en paire pour une fête, ou par quatre avec le caisson TS15S pour un mariage. Son mixeur intégré accepte directement un micro et une source Bluetooth.",
+      "specs": [
+        {
+          "label": "Puissance",
+          "value": "1 000 W RMS (2 000 W crête)"
+        },
+        {
+          "label": "Haut-parleurs",
+          "value": "Boomer 10 pouces et moteur à compression 1,4 pouce"
+        },
+        {
+          "label": "Pression sonore max.",
+          "value": "130 dB"
+        },
+        {
+          "label": "Réponse en fréquence",
+          "value": "57 Hz à 20 kHz"
+        },
+        {
+          "label": "Entrées",
+          "value": "2 combos XLR/jack et Bluetooth"
+        },
+        {
+          "label": "Poids",
+          "value": "11,8 kg"
+        }
+      ],
+      "included": [
+        "Câble d'alimentation"
+      ],
+      "quantity": 4,
+      "price_24h": 30,
+      "price_weekend": 45,
+      "unit_label": "l'unité",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/alto-ts410.jpg"
+      ],
+      "visible": true,
+      "featured": true,
+      "sort": 2
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000003",
+      "slug": "caisson-alto-ts15s",
+      "category_id": "sono",
+      "name": "Caisson de basses Alto TS15S",
+      "brand": "Alto Professional",
+      "model": "TS15S",
+      "summary": "Caisson actif 15 pouces de 2 500 W crête pour des basses profondes.",
+      "description": "À associer aux enceintes TS410 pour donner du corps à la musique sur la piste de danse. Il se pose au sol et peut porter une enceinte sur son mât.",
+      "specs": [
+        {
+          "label": "Puissance",
+          "value": "2 500 W crête"
+        },
+        {
+          "label": "Haut-parleur",
+          "value": "15 pouces"
+        },
+        {
+          "label": "Réponse en fréquence",
+          "value": "36 Hz à 140 Hz"
+        },
+        {
+          "label": "Embase de mât",
+          "value": "36 mm"
+        },
+        {
+          "label": "Poids",
+          "value": "39,6 kg"
+        }
+      ],
+      "included": [
+        "Câble d'alimentation",
+        "Câbles XLR de liaison"
+      ],
+      "quantity": 1,
+      "price_24h": 45,
+      "price_weekend": 65,
+      "unit_label": "l'unité",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/alto-ts15s.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 3
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000016",
+      "slug": "enceinte-jbl-partybox-on-the-go",
+      "category_id": "sono",
+      "name": "Enceinte JBL PartyBox On-The-Go",
+      "brand": "JBL",
+      "model": "PartyBox On-The-Go",
+      "summary": "Enceinte autonome sur batterie, avec jeu de lumières et micro sans fil : la fête partout, même sans prise.",
+      "description": "Elle se porte à l'épaule et fonctionne sur batterie : idéale pour un apéritif en extérieur, un pique-nique, un karaoké ou une petite fête à la maison. Connectez votre téléphone en Bluetooth : les lumières suivent la musique, et le micro sans fil fourni est prêt pour chanter ou faire un discours.",
+      "specs": [
+        {
+          "label": "Puissance",
+          "value": "100 W"
+        },
+        {
+          "label": "Autonomie",
+          "value": "Batterie intégrée, jusqu'à 6 h"
+        },
+        {
+          "label": "Connexions",
+          "value": "Bluetooth et entrée micro"
+        },
+        {
+          "label": "Lumières",
+          "value": "Jeu de lumières synchronisé à la musique"
+        },
+        {
+          "label": "Protection",
+          "value": "Résiste aux éclaboussures (IPX4)"
+        },
+        {
+          "label": "Transport",
+          "value": "Bandoulière, moins de 8 kg"
+        }
+      ],
+      "included": [
+        "1 micro sans fil",
+        "Câble d'alimentation"
+      ],
+      "quantity": 1,
+      "price_24h": 25,
+      "price_weekend": 35,
+      "unit_label": "l'unité",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/jbl-partybox-on-the-go.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 4
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000004",
+      "slug": "table-de-mixage-2-voies",
+      "category_id": "sono",
+      "name": "Table de mixage 2 voies",
+      "brand": "Ibiza Sound",
+      "model": "MIX500BT",
+      "summary": "Mixeur compact avec Bluetooth, lecteur USB et entrées jack.",
+      "description": "Pour gérer la musique simplement : branchez votre téléphone en Bluetooth, une clé USB ou une source en jack, puis réglez le volume de chaque voie.",
+      "specs": [
+        {
+          "label": "Voies",
+          "value": "2"
+        },
+        {
+          "label": "Sources",
+          "value": "Bluetooth, USB et jack"
+        }
+      ],
+      "included": [
+        "Câbles de liaison vers les enceintes"
+      ],
+      "quantity": 2,
+      "price_24h": 15,
+      "price_weekend": 20,
+      "unit_label": "l'unité",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/table-mixage-ibiza-mix500bt.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 5
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000005",
+      "slug": "pioneer-dj-xdj-rr",
+      "category_id": "dj",
+      "name": "Pioneer DJ XDJ-RR",
+      "brand": "Pioneer DJ",
+      "model": "XDJ-RR",
+      "summary": "Système DJ tout-en-un 2 voies, compatible rekordbox, sans ordinateur.",
+      "description": "Deux lecteurs et un mixeur dans un seul appareil, avec un grand écran pour parcourir sa musique depuis une clé USB. Location sur demande, pour les DJ expérimentés ou avec notre présence technique sur place.",
+      "specs": [
+        {
+          "label": "Voies",
+          "value": "2 lecteurs et mixeur intégrés"
+        },
+        {
+          "label": "Sources",
+          "value": "2 ports USB et 1 entrée auxiliaire"
+        },
+        {
+          "label": "Écran",
+          "value": "Couleur 7 pouces"
+        },
+        {
+          "label": "Entrée micro",
+          "value": "XLR et jack 6,35 mm"
+        },
+        {
+          "label": "Sorties",
+          "value": "Master XLR et RCA, 2 sorties casque"
+        },
+        {
+          "label": "Poids",
+          "value": "5,2 kg"
+        }
+      ],
+      "included": [
+        "Câble d'alimentation",
+        "Câbles XLR vers la sono"
+      ],
+      "quantity": 1,
+      "price_24h": 90,
+      "price_weekend": 140,
+      "unit_label": "l'unité",
+      "rental_mode": "sur_demande",
+      "caution": 1000,
+      "photos": [
+        "/photos/pioneer-xdj-rr.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 5
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000006",
+      "slug": "paire-micros-sans-fil-jbl",
+      "category_id": "micros",
+      "name": "Paire de micros sans fil JBL",
+      "brand": "JBL",
+      "model": null,
+      "summary": "Deux micros main sans fil et leur récepteur.",
+      "description": "Pour les discours, les témoins, le karaoké ou une animation à deux voix. Le récepteur se branche sur la table de mixage ou directement sur une enceinte.",
+      "specs": [
+        {
+          "label": "Micros",
+          "value": "2 micros main sans fil"
+        },
+        {
+          "label": "Usage",
+          "value": "Discours, karaoké, animation"
+        }
+      ],
+      "included": [
+        "Récepteur",
+        "Piles chargées"
+      ],
+      "quantity": 1,
+      "price_24h": 20,
+      "price_weekend": 30,
+      "unit_label": "la paire",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/jbl-micros.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 6
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000007",
+      "slug": "paire-micros-sans-fil",
+      "category_id": "micros",
+      "name": "Paire de micros sans fil",
+      "brand": null,
+      "model": null,
+      "summary": "Deux micros main sans fil et leur récepteur.",
+      "description": "Une deuxième paire pour les événements avec plusieurs intervenants : cérémonies, remises de prix, réunions.",
+      "specs": [
+        {
+          "label": "Micros",
+          "value": "2 micros main sans fil"
+        },
+        {
+          "label": "Usage",
+          "value": "Discours, cérémonie, animation"
+        }
+      ],
+      "included": [
+        "Récepteur",
+        "Piles chargées"
+      ],
+      "quantity": 1,
+      "price_24h": 20,
+      "price_weekend": 30,
+      "unit_label": "la paire",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/micros-sans-fil-ghost.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 7
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000008",
+      "slug": "micro-sans-fil",
+      "category_id": "micros",
+      "name": "Micro sans fil",
+      "brand": null,
+      "model": null,
+      "summary": "Un micro main sans fil et son récepteur.",
+      "description": "La solution simple pour un discours ou un toast, à brancher sur la table de mixage ou sur une enceinte TS410.",
+      "specs": [
+        {
+          "label": "Micro",
+          "value": "1 micro main sans fil"
+        },
+        {
+          "label": "Usage",
+          "value": "Discours, toast, annonces"
+        }
+      ],
+      "included": [
+        "Récepteur",
+        "Piles chargées"
+      ],
+      "quantity": 1,
+      "price_24h": 12,
+      "price_weekend": 18,
+      "unit_label": "l'unité",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/micro-sans-fil.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 8
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000009",
+      "slug": "uplight-led",
+      "category_id": "eclairage",
+      "name": "Uplight LED",
+      "brand": null,
+      "model": null,
+      "summary": "Projecteur LED posé au sol pour mettre en couleur les murs, les colonnes et le décor.",
+      "description": "Placés le long des murs ou au pied des colonnes, les uplights transforment l'ambiance d'une salle de réception. Huit unités suffisent à habiller une salle de mariage.",
+      "specs": [
+        {
+          "label": "Usage",
+          "value": "Mise en lumière de murs, colonnes et décor"
+        },
+        {
+          "label": "Disponibles",
+          "value": "8 unités"
+        }
+      ],
+      "included": [],
+      "quantity": 8,
+      "price_24h": 7,
+      "price_weekend": 10,
+      "unit_label": "l'unité",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/uplight-led.jpg"
+      ],
+      "visible": true,
+      "featured": true,
+      "sort": 9
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000010",
+      "slug": "pied-effets-lyre-laser-strobes",
+      "category_id": "eclairage",
+      "name": "Pied d'effets : lyre, laser et stroboscopes",
+      "brand": null,
+      "model": null,
+      "summary": "Un pied complet avec une lyre, un laser et deux stroboscopes pour la piste de danse.",
+      "description": "Le cœur de l'ambiance dansante : la lyre balaie la salle, le laser trace ses faisceaux et les stroboscopes marquent les temps forts. Livré monté sur son pied, prêt à brancher.",
+      "specs": [
+        {
+          "label": "Composition",
+          "value": "1 lyre LED, 1 laser, 2 stroboscopes"
+        },
+        {
+          "label": "Support",
+          "value": "Pied avec barre de fixation"
+        }
+      ],
+      "included": [
+        "Rallonge électrique"
+      ],
+      "quantity": 1,
+      "price_24h": 40,
+      "price_weekend": 60,
+      "unit_label": "le pied complet",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [],
+      "visible": true,
+      "featured": false,
+      "sort": 10
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000011",
+      "slug": "pied-4-par-led",
+      "category_id": "eclairage",
+      "name": "Pied de 4 PAR LED",
+      "brand": null,
+      "model": null,
+      "summary": "Quatre projecteurs PAR LED sur pied pour colorer la piste ou la scène.",
+      "description": "Un éclairage coloré et homogène pour la piste de danse, la table des mariés ou une petite scène. Livré monté sur son pied.",
+      "specs": [
+        {
+          "label": "Composition",
+          "value": "4 projecteurs PAR LED"
+        },
+        {
+          "label": "Support",
+          "value": "Pied avec barre de fixation"
+        }
+      ],
+      "included": [
+        "Rallonge électrique"
+      ],
+      "quantity": 1,
+      "price_24h": 25,
+      "price_weekend": 35,
+      "unit_label": "le pied complet",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/pied-4-par-led.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 11
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000012",
+      "slug": "pied-4-par-led-effets-disco",
+      "category_id": "eclairage",
+      "name": "Pied de 4 PAR LED et 2 effets disco",
+      "brand": null,
+      "model": null,
+      "summary": "Quatre PAR LED et deux effets disco sur un même pied.",
+      "description": "La couleur des PAR LED et le mouvement des effets disco réunis sur un seul pied : idéal pour animer une soirée sans multiplier les installations.",
+      "specs": [
+        {
+          "label": "Composition",
+          "value": "4 projecteurs PAR LED et 2 effets disco"
+        },
+        {
+          "label": "Support",
+          "value": "Pied avec barre de fixation"
+        }
+      ],
+      "included": [
+        "Rallonge électrique"
+      ],
+      "quantity": 1,
+      "price_24h": 35,
+      "price_weekend": 50,
+      "unit_label": "le pied complet",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/pied-4-par-disco.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 12
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000013",
+      "slug": "machine-a-fumee-500w",
+      "category_id": "eclairage",
+      "name": "Machine à fumée 500 W",
+      "brand": null,
+      "model": null,
+      "summary": "Fait ressortir les faisceaux de lumière. Liquide fourni.",
+      "description": "Quelques secondes de fumée suffisent à révéler les faisceaux de la lyre et du laser. À utiliser seulement si le lieu l'autorise : la fumée peut déclencher certains détecteurs incendie.",
+      "specs": [
+        {
+          "label": "Puissance",
+          "value": "500 W"
+        },
+        {
+          "label": "Consommable",
+          "value": "Liquide fourni"
+        }
+      ],
+      "included": [
+        "Liquide à fumée",
+        "Télécommande"
+      ],
+      "quantity": 1,
+      "price_24h": 15,
+      "price_weekend": 20,
+      "unit_label": "l'unité",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/machine-a-fumee.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 13
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000014",
+      "slug": "pied-enceinte",
+      "category_id": "accessoires",
+      "name": "Pied d'enceinte",
+      "brand": null,
+      "model": null,
+      "summary": "Trépied réglable en hauteur, offert avec les enceintes.",
+      "description": "Placer les enceintes en hauteur améliore nettement la diffusion du son au-dessus du public. Ajoutez autant de pieds que d'enceintes.",
+      "specs": [
+        {
+          "label": "Mât",
+          "value": "Standard 35 mm"
+        },
+        {
+          "label": "Hauteur",
+          "value": "Réglable"
+        }
+      ],
+      "included": [],
+      "quantity": 4,
+      "price_24h": 0,
+      "price_weekend": 0,
+      "unit_label": "l'unité",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/pieds-enceinte.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 14
+    },
+    {
+      "id": "a5100000-0000-4000-8000-000000000015",
+      "slug": "cables-xlr",
+      "category_id": "accessoires",
+      "name": "Câble XLR",
+      "brand": null,
+      "model": null,
+      "summary": "Câbles audio de différentes longueurs, fournis selon votre installation.",
+      "description": "Indiquez dans votre message les longueurs dont vous avez besoin : nous préparons le câblage adapté à votre salle.",
+      "specs": [
+        {
+          "label": "Longueurs",
+          "value": "Au choix, sur demande"
+        }
+      ],
+      "included": [],
+      "quantity": 10,
+      "price_24h": 0,
+      "price_weekend": 0,
+      "unit_label": "le câble",
+      "rental_mode": "libre",
+      "caution": null,
+      "photos": [
+        "/photos/cables-xlr.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 15
+    }
+  ],
+  "packs": [
+    {
+      "id": "a5200000-0000-4000-8000-000000000001",
+      "slug": "pack-anniversaire",
+      "name": "Pack Anniversaire",
+      "tagline": "Le son et une touche de lumière pour une fête à la maison ou en salle.",
+      "description": "Deux enceintes sur pieds, une table de mixage pour brancher votre téléphone, un micro sans fil pour les discours et un pied de PAR LED pour colorer la piste.",
+      "audience": "Jusqu'à 50 personnes",
+      "items": [
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000002",
+          "quantity": 2
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000014",
+          "quantity": 2
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000004",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000008",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000011",
+          "quantity": 1
+        }
+      ],
+      "price_24h": 95,
+      "price_weekend": 140,
+      "caution": null,
+      "photos": [
+        "/photos/sono-1600w-salle-fete.jpg"
+      ],
+      "visible": true,
+      "featured": true,
+      "sort": 1
+    },
+    {
+      "id": "a5200000-0000-4000-8000-000000000002",
+      "slug": "pack-soiree",
+      "name": "Pack Soirée",
+      "tagline": "Une vraie sono avec caisson et des effets pour faire danser.",
+      "description": "Le système Elokance 1 600 W, la table de mixage, la paire de micros JBL, le pied d'effets avec lyre et laser, le pied PAR LED et effets disco, et la machine à fumée.",
+      "audience": "Jusqu'à 120 personnes",
+      "items": [
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000001",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000004",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000006",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000010",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000012",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000013",
+          "quantity": 1
+        }
+      ],
+      "price_24h": 165,
+      "price_weekend": 240,
+      "caution": null,
+      "photos": [
+        "/photos/pack-soiree-elokance.jpg",
+        "/photos/soiree-fumee.jpg",
+        "/photos/soiree-eclairage.jpg",
+        "/photos/soiree-fumee-vert.jpg",
+        "/photos/anniversaire-18-ans.jpg"
+      ],
+      "visible": true,
+      "featured": true,
+      "sort": 2
+    },
+    {
+      "id": "a5200000-0000-4000-8000-000000000003",
+      "slug": "pack-mariage",
+      "name": "Pack Mariage",
+      "tagline": "Quatre enceintes, un caisson et une mise en lumière complète de la salle.",
+      "description": "Quatre enceintes Alto TS410 sur pieds et le caisson TS15S pour le dîner et la soirée, une paire de micros sans fil pour les discours, huit uplights pour habiller la salle, un pied de PAR LED et le pied d'effets pour la piste. Nous conseillons d'y ajouter la livraison et l'installation.",
+      "audience": "Jusqu'à 200 personnes",
+      "items": [
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000002",
+          "quantity": 4
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000003",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000014",
+          "quantity": 4
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000004",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000007",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000009",
+          "quantity": 8
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000011",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000010",
+          "quantity": 1
+        }
+      ],
+      "price_24h": 290,
+      "price_weekend": 420,
+      "caution": 1000,
+      "photos": [
+        "/photos/salle-poutres.jpg",
+        "/photos/terrasse-montagnes.jpg",
+        "/photos/scene-fresque.jpg"
+      ],
+      "visible": true,
+      "featured": true,
+      "sort": 3
+    },
+    {
+      "id": "a5200000-0000-4000-8000-000000000004",
+      "slug": "pack-entreprise-ceremonie",
+      "name": "Pack Entreprise et cérémonie",
+      "tagline": "Une diffusion claire de la voix avec trois micros sans fil.",
+      "description": "Deux enceintes sur pieds, la table de mixage, la paire de micros JBL et un micro supplémentaire : de quoi faire parler plusieurs intervenants lors d'une réunion, d'une cérémonie laïque ou d'une remise de prix.",
+      "audience": "Discours, réunions, cérémonies",
+      "items": [
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000002",
+          "quantity": 2
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000014",
+          "quantity": 2
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000004",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000006",
+          "quantity": 1
+        },
+        {
+          "product_id": "a5100000-0000-4000-8000-000000000008",
+          "quantity": 1
+        }
+      ],
+      "price_24h": 90,
+      "price_weekend": 135,
+      "caution": null,
+      "photos": [
+        "/photos/sono-1600w-reception-2.jpg"
+      ],
+      "visible": true,
+      "featured": false,
+      "sort": 4
+    }
+  ],
+  "services": [
+    {
+      "id": "installation",
+      "name": "Installation et démontage",
+      "description": "Nous installons, réglons et testons le matériel avant l'événement, puis nous le démontons à la fin.",
+      "price": 80,
+      "unit_label": "par prestation",
+      "visible": true,
+      "sort": 1
+    },
+    {
+      "id": "technicien",
+      "name": "Présence technique sur place",
+      "description": "Un technicien reste pendant l'événement pour gérer le son, les micros et la lumière.",
+      "price": 200,
+      "unit_label": "par soirée",
+      "visible": true,
+      "sort": 2
+    }
+  ],
+  "zones": [
+    {
+      "id": "a5300000-0000-4000-8000-000000000001",
+      "name": "Moins de 20 km",
+      "description": "Montmélian, Pontcharra, Challes-les-Eaux, Saint-Pierre-d'Albigny, Allevard",
+      "price": 40,
+      "sort": 1
+    },
+    {
+      "id": "a5300000-0000-4000-8000-000000000002",
+      "name": "20 à 50 km",
+      "description": "Chambéry, Aix-les-Bains, Albertville, Grenoble, Le Bourget-du-Lac",
+      "price": 80,
+      "sort": 2
+    },
+    {
+      "id": "a5300000-0000-4000-8000-000000000003",
+      "name": "50 à 80 km",
+      "description": "Annecy, Moûtiers, Voiron, Ugine",
+      "price": 130,
+      "sort": 3
+    },
+    {
+      "id": "a5300000-0000-4000-8000-000000000004",
+      "name": "Stations et plus de 80 km",
+      "description": "La Plagne, Les Arcs, Courchevel, Val Thorens, Tignes, Val d'Isère",
+      "price": null,
+      "sort": 4
+    }
+  ]
+}
