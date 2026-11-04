@@ -895,6 +895,10 @@ grant update on public.settings to authenticated;
 grant select, update on public.profiles to authenticated;
 grant select, insert, update, delete on public.bookings, public.booking_items, public.messages, public.blocks, public.booking_notes, public.admin_settings to authenticated;
 grant select, update on public.payments to authenticated;
+-- Les fonctions serveur (clé secrète) lisent et mettent à jour les tables, quel que soit le réglage
+-- « Afficher automatiquement les nouvelles tables » choisi à la création du projet Supabase.
+grant all on all tables in schema public to service_role;
+grant all on all sequences in schema public to service_role;
 
 -- Supabase ouvre par défaut les fonctions à tous : seules celles-ci restent appelables depuis le site.
 revoke execute on all functions in schema public from public, anon, authenticated;
