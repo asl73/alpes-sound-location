@@ -14,10 +14,29 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
     steps:
+      - name: Vérifier la configuration
+        id: config
+        run: |
+          if [ -n "$SUPABASE_ACCESS_TOKEN" ] && [ -n "$PROJECT_REF" ]; then
+            echo "pret=oui" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # Projet Supabase pas encore relié : un envoi automatique attend sans erreur,
+          # un lancement à la main signale ce qui manque.
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "::error::Ajoute d'abord les secrets SUPABASE_ACCESS_TOKEN et SUPABASE_PROJECT_REF (Settings > Secrets and variables > Actions)."
+            exit 1
+          fi
+          echo "Secrets pas encore ajoutés : rien à déployer pour l'instant."
+          echo "pret=non" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
+        if: steps.config.outputs.pret == 'oui'
       - uses: supabase/setup-cli@v1
+        if: steps.config.outputs.pret == 'oui'
         with:
           version: latest
       - name: Déployer les fonctions
-        run: supabase functions deploy --project-ref ${{ secrets.SUPABASE_PROJECT_REF }} --use-api
+        if: steps.config.outputs.pret == 'oui'
+        run: supabase functions deploy --project-ref "$PROJECT_REF" --use-api

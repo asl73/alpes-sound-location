@@ -15,4 +15,15 @@ jobs:
         env:
           URL: ${{ secrets.SUPABASE_URL }}
           KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_ANON_KEY }}
-        run: curl -fsS "$URL/rest/v1/categories?select=id&limit=1" -H "apikey: $KEY" > /dev/null
+        run: |
+          if [ -z "$URL" ] || [ -z "$KEY" ]; then
+            # Tant que la base n'est pas configurée, rien à faire (sauf lancement à la main : on le signale)
+            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+              echo "::error::Ajoute d'abord les secrets SUPABASE_URL et SUPABASE_PUBLISHABLE_KEY (Settings > Secrets and variables > Actions)."
+              exit 1
+            fi
+            echo "Secrets pas encore ajoutés : rien à faire pour l'instant."
+            exit 0
+          fi
+          curl -fsS "$URL/rest/v1/categories?select=id&limit=1" -H "apikey: $KEY" > /dev/null
+          echo "Base active."
