@@ -141,6 +141,13 @@ function demoStart(): string {
   const m = /^([a-z0-9-]+)(\?[a-z0-9=&_-]*)?$/.exec(name)
   return m ? '/' + m[1].split('--').join('/') + (m[2] ?? '') : '/'
 }
+// Une adresse avec « // » dans le chemin mène à la même page : c'est le cas des liens des e-mails
+// Supabase quand l'adresse du site y est enregistrée avec un « / » final ({{ .SiteURL }}/nouveau-mot-de-passe).
+function tidyPath() {
+  if (typeof location === 'undefined' || !location.pathname.includes('//')) return
+  history.replaceState(history.state, '', location.pathname.replace(/\/{2,}/g, '/') + location.search + location.hash)
+}
+if (!__DEMO__) tidyPath()
 const router = __DEMO__ ? createMemoryRouter(routes, { initialEntries: [demoStart()] }) : createBrowserRouter(routes)
 
 export default function App() {
