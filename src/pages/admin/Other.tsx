@@ -373,6 +373,13 @@ export function SettingsPage() {
           <div className="sm:col-span-2">{text('Zone d’intervention', c.area, (v) => setC({ area: v }), 's-area')}</div>
           {text('Médiateur de la consommation', c.mediator_name ?? '', (v) => setC({ mediator_name: v }), 's-med', 'Obligatoire pour vendre aux particuliers')}
           {text('Site du médiateur', c.mediator_url ?? '', (v) => setC({ mediator_url: v }), 's-medurl', 'Ex. : www.cm2c.net')}
+          {text(
+            'Lien pour laisser un avis Google',
+            c.review_url ?? '',
+            (v) => setC({ review_url: v }),
+            's-review',
+            'Fiche Google > « Demander des avis » > copier le lien. Envoyé au client quand vous passez sa réservation en « terminée ».',
+          )}
         </section>
 
         <section className="panel grid gap-4 p-5 sm:grid-cols-2">

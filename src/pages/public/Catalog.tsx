@@ -1,11 +1,13 @@
 import { ArrowRight, ChevronRight, Expand } from 'lucide-react'
 import { Link, useParams, useSearchParams } from 'react-router'
 import { AddControl, DatesBar, PackCard, PriceLine, ProductCard, StockNote } from '../../components/catalog'
-import { PageHead, useTitle } from '../../components/layout'
+import { PageHead } from '../../components/layout'
+import { useMeta } from '../../components/seo'
 import { PhotoStrip } from '../../components/gallery'
 import { CategoryIcon, Lightbox, Notice, Photo, ProductVisual } from '../../components/ui'
 import { eur } from '../../lib/format'
 import { packStock } from '../../lib/rules'
+import { PAGES, eventForPack, packMeta, privateMeta, productMeta } from '../../lib/seo'
 import { useCatalog, useQuote } from '../../lib/store'
 import { useState } from 'react'
 import NotFound from './NotFound'
@@ -15,6 +17,7 @@ export function CatalogPage() {
   const [params, setParams] = useSearchParams()
   const active = params.get('categorie')
   const shown = active ? categories.filter((c) => c.id === active) : categories
+  useMeta(PAGES['/materiel'])
 
   return (
     <>
@@ -92,7 +95,7 @@ export function ProductPage() {
   const product = products.find((p) => p.slug === slug)
   const [photo, setPhoto] = useState(0)
   const [viewer, setViewer] = useState<number | null>(null)
-  useTitle(product?.name ?? 'Article introuvable')
+  useMeta(product ? productMeta(product) : privateMeta('Article introuvable'))
   if (!product) return <NotFound />
   const cat = categories.find((c) => c.id === product.category_id)
   const inPacks = packs.filter((k) => k.items.some((it) => it.product_id === product.id))
@@ -272,6 +275,7 @@ function CustomPackBanner() {
 
 export function PacksPage() {
   const { packs } = useCatalog()
+  useMeta(PAGES['/packs'])
   return (
     <>
       <PageHead
@@ -302,9 +306,10 @@ export function PackPage() {
   const { slug } = useParams()
   const { packs, settings } = useCatalog()
   const pack = packs.find((p) => p.slug === slug)
-  useTitle(pack?.name ?? 'Pack introuvable')
+  useMeta(pack ? packMeta(pack) : privateMeta('Pack introuvable'))
   if (!pack) return <NotFound />
   const others = packs.filter((p) => p.id !== pack.id)
+  const event = eventForPack(pack.slug)
   return (
     <div className="wrap pt-6">
       <nav className="flex items-center gap-1.5 text-[14px] text-muted" aria-label="Fil d’Ariane">
@@ -317,6 +322,11 @@ export function PackPage() {
       <p className="mt-6 text-[13px] font-semibold text-or">{pack.audience}</p>
       <h1 className="display mt-1 text-[48px] md:text-[64px]">{pack.name}</h1>
       <p className="mt-3 max-w-3xl text-[17px] text-ink/80">{pack.description}</p>
+      {event && (
+        <Link to={event.path} className="link mt-3 inline-flex items-center gap-1.5 text-[15px]">
+          {event.heading} : nos conseils <ArrowRight className="size-4" />
+        </Link>
+      )}
       <div className="mt-6">
         <DatesBar />
       </div>

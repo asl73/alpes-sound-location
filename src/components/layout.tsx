@@ -4,6 +4,8 @@ import { Link, NavLink, Navigate, Outlet, useLocation, useNavigate } from 'react
 import { api } from '../lib/api'
 import { eur, phoneHref, plural } from '../lib/format'
 import { useAuth, useCatalog, useQuote, useToast } from '../lib/store'
+import { EVENT_PAGES, privateMeta } from '../lib/seo'
+import { useMeta } from './seo'
 import { CopyText, Emblem, Loading } from './ui'
 
 // ------------------------------------------------------------------ Bandeau de démonstration
@@ -154,7 +156,7 @@ function Footer() {
   const c = settings.company
   return (
     <footer className="mt-24 bg-nuit text-creme/80">
-      <div className="wrap grid gap-10 py-14 md:grid-cols-[1.3fr_1fr_1fr]">
+      <div className="wrap grid gap-10 py-14 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
         <div className="max-w-sm">
           <div className="flex items-center gap-3">
             <Emblem tone="dark" className="size-14" />
@@ -171,6 +173,18 @@ function Footer() {
               <li key={n.to}>
                 <Link to={n.to} className="hover:text-white">
                   {n.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="text-[13px] font-semibold text-or-2">Votre événement</p>
+          <ul className="mt-3 space-y-2 text-[15px]">
+            {EVENT_PAGES.map((e) => (
+              <li key={e.path}>
+                <Link to={e.path} className="hover:text-white">
+                  {e.label}
                 </Link>
               </li>
             ))}
@@ -248,10 +262,8 @@ export function PublicLayout() {
   )
 }
 
+/** En-tête des pages intérieures. Le titre de l'onglet et la description viennent de useMeta, appelé par chaque page. */
 export function PageHead({ kicker, title, children, actions }: { kicker?: string; title: string; children?: ReactNode; actions?: ReactNode }) {
-  useEffect(() => {
-    document.title = `${title} · Alpes & Sound Location`
-  }, [title])
   return (
     <div className="bg-nuit text-creme">
       <div className="wrap pt-10 pb-12 md:pt-14 md:pb-16">
@@ -264,10 +276,9 @@ export function PageHead({ kicker, title, children, actions }: { kicker?: string
   )
 }
 
+/** Titre d'une page qui n'a pas sa place dans Google (compte, connexion, administration…). */
 export function useTitle(title: string) {
-  useEffect(() => {
-    document.title = `${title} · Alpes & Sound Location`
-  }, [title])
+  useMeta(privateMeta(title))
 }
 
 // ------------------------------------------------------------------ Espace client

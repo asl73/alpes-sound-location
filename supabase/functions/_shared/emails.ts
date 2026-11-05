@@ -1,5 +1,5 @@
 // Modèles d'e-mails et envoi par Resend.
-import { SITE_URL, type BookingRow, type Settings } from './common.ts'
+import { SITE_URL, reviewUrl, type BookingRow, type Settings } from './common.ts'
 
 const esc = (s: unknown) =>
   String(s ?? '')
@@ -208,6 +208,22 @@ ${button(adminLink(b), 'Voir la réservation')}`,
       }</p>
 <p>${esc(b.client_email)} · ${esc(b.client_phone)}</p>
 ${button(adminLink(b), 'Voir la réservation')}`,
+    ),
+  }),
+
+  /** Après la location (réservation passée en « terminée ») : merci, et le lien pour laisser un avis Google. */
+  finished: (b: BookingRow, s: Settings): Mail => ({
+    to: b.client_email,
+    replyTo: s.company.email,
+    subject: `Merci pour votre confiance`,
+    html: layout(
+      s,
+      'Merci',
+      `<p>Bonjour ${firstName(b)},</p>
+<p>Merci d’avoir loué votre matériel chez ${esc(s.company.name)} ${esc(range(b.start_date, b.end_date))}. Nous espérons que votre événement s’est bien passé.</p>
+<p>Si vous avez été satisfait, un avis sur Google nous aide beaucoup à nous faire connaître : cela ne prend qu’une minute.</p>
+${button(reviewUrl(s) ?? SITE_URL, 'Laisser un avis sur Google')}
+<p>Une remarque, une idée pour la prochaine fois ? Répondez simplement à cet e-mail.</p>`,
     ),
   }),
 

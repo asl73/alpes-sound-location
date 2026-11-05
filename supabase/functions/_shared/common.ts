@@ -102,6 +102,14 @@ export interface CompanySettings {
   vat_note: string
   mediator_name?: string
   mediator_url?: string
+  /** Lien « Laisser un avis » de la fiche Google */
+  review_url?: string
+}
+
+/** Lien d'avis utilisable (adresse https uniquement), ou null. */
+export function reviewUrl(s: Settings): string | null {
+  const url = String(s.company.review_url ?? '').trim()
+  return /^https:\/\/[^\s"<>]+$/i.test(url) ? url : null
 }
 
 export interface Settings {

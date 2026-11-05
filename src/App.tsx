@@ -5,12 +5,14 @@ import { Loading, Notice } from './components/ui'
 import { DemoPaymentPage, MyBookingPage, MyBookingsPage, ProfilePage } from './pages/account/Account'
 import { ForgotPage, LoginPage, RegisterPage, ResetPage } from './pages/auth/Auth'
 import { CatalogPage, PackPage, PacksPage, ProductPage } from './pages/public/Catalog'
+import EventPageView from './pages/public/Events'
 import PackBuilderPage from './pages/public/PackBuilder'
 import Home from './pages/public/Home'
 import { CgvPage, ContactPage, MentionsPage, PrivacyPage, ServicesPage } from './pages/public/Info'
 import NotFound from './pages/public/NotFound'
 import QuotePage, { QuoteSentPage } from './pages/public/Quote'
 import { AuthProvider, CatalogProvider, QuoteProvider, ToastProvider, useCatalogState } from './lib/store'
+import { EVENT_PAGES } from './lib/seo'
 
 // L'administration n'est chargée que pour l'administrateur.
 const admin = <T extends string>(name: T) =>
@@ -88,6 +90,7 @@ const routes: RouteObject[] = [
           { path: 'packs/sur-mesure', element: <PackBuilderPage /> },
           { path: 'packs/:slug', element: <PackPage /> },
           { path: 'prestations', element: <ServicesPage /> },
+          ...EVENT_PAGES.map((e) => ({ path: e.path.slice(1), element: <EventPageView /> })),
           { path: 'devis', element: <QuotePage /> },
           { path: 'devis/envoye/:id', element: <QuoteSentPage /> },
           { path: 'contact', element: <ContactPage /> },

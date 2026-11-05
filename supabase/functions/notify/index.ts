@@ -1,6 +1,6 @@
 // Envoie les e-mails liés aux demandes, réservations et messages de contact.
 // Appelée par le site après une action ; vérifie que l'appelant a le droit de la déclencher.
-import { admin, callerOf, cors, expireCheckout, isAdmin, json, loadBooking, loadSettings } from '../_shared/common.ts'
+import { admin, callerOf, cors, expireCheckout, isAdmin, json, loadBooking, loadSettings, reviewUrl } from '../_shared/common.ts'
 import { adminEmail, mails, send } from '../_shared/emails.ts'
 
 const FRESH_MS = 15 * 60 * 1000
@@ -61,6 +61,12 @@ Deno.serve(async (req) => {
         break
       case 'booking_paid':
         if (callerIsAdmin && b.status === 'confirmee') await send(mails.paidClient(b, settings))
+        break
+      case 'booking_finished':
+        // Location terminée : un seul e-mail de remerciement, seulement si le lien d'avis Google est réglé
+        if (!callerIsAdmin || b.status !== 'terminee' || done.has('review') || !reviewUrl(settings)) break
+        await mark('review')
+        await send(mails.finished(b, settings))
         break
       default:
         return json({ error: 'Type inconnu' }, 400)

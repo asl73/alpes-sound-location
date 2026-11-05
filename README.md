@@ -38,6 +38,7 @@ src/
   data/seed.json        catalogue de départ (matériel, packs, zones, paramètres)
   lib/media.ts          adresses et tailles des photos
   lib/rules.ts          règles de prix, de dates et de stock
+  lib/seo.ts            titres et descriptions des pages pour Google, pages mariage / anniversaire / entreprise
   lib/api/              accès aux données : supabase.ts (en ligne) et demo.ts (aperçu)
   pages/public/         pages du site
   pages/account/        espace client
@@ -52,6 +53,10 @@ PHOTOS.md               provenance de chaque photo et accords à obtenir pour ce
 ```
 
 Les prix et les disponibilités sont toujours recalculés par la base de données à la réservation : un client ne peut pas modifier un prix ni réserver du matériel déjà pris depuis son navigateur.
+
+### Référencement
+
+À chaque mise en ligne, `scripts/seo-prerender.ts` lit le catalogue dans Supabase et écrit, pour chaque page publique (accueil, catalogue, chaque article, chaque pack, pages mariage, anniversaire et soirée d’entreprise), une copie de `index.html` avec son propre titre, sa description, son adresse canonique et son aperçu de lien, puis génère `sitemap.xml`. Cloudflare Pages sert `materiel/enceinte-alto-ts410.html` à l’adresse `/materiel/enceinte-alto-ts410`, et la page d’accueil pour toute autre adresse. Un article ajouté dans l’administration s’affiche tout de suite ; il rejoint le plan du site à la mise en ligne suivante. Quand une réservation passe en « terminée », le client reçoit un remerciement avec le lien d’avis Google réglé dans Administration > Paramètres (rien n’est envoyé tant que ce lien est vide).
 
 ## Commandes
 

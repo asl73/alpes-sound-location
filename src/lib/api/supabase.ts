@@ -267,6 +267,7 @@ export const supabaseApi: Api = {
       if (action === 'refuser') await notify('booking_refused', id)
       if (action === 'annuler') await notify('booking_cancelled', id) // ferme la page de paiement éventuellement ouverte
       if (action === 'acompte_recu') await notify('booking_paid', id)
+      if (action === 'terminer') await notify('booking_finished', id) // remerciement et lien d'avis Google, s'il est réglé
     },
 
     async blocks() {

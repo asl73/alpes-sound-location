@@ -2,9 +2,11 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import { useState, type FormEvent, type ReactNode } from 'react'
 import { Link } from 'react-router'
 import { PageHead } from '../../components/layout'
+import { useMeta } from '../../components/seo'
 import { CopyText, Field, Notice, Spinner } from '../../components/ui'
 import { api } from '../../lib/api'
 import { eur, phoneHref } from '../../lib/format'
+import { PAGES } from '../../lib/seo'
 import { useAuth, useCatalog } from '../../lib/store'
 
 // ------------------------------------------------------------------ Prestations
@@ -18,6 +20,7 @@ export function ServicesPage() {
   const install = services.find((s) => s.id === 'installation')
   const tech = services.find((s) => s.id === 'technicien')
   const b = settings.booking
+  useMeta(PAGES['/prestations'])
   return (
     <>
       <PageHead kicker="Prestations" title="Livraison et installation">
@@ -149,6 +152,7 @@ export function ServicesPage() {
 export function ContactPage() {
   const { settings } = useCatalog()
   const { user } = useAuth()
+  useMeta(PAGES['/contact'])
   const c = settings.company
   const [form, setForm] = useState({ name: user?.full_name ?? '', email: user?.email ?? '', phone: user?.phone ?? '', subject: '', body: '' })
   const [state, setState] = useState<'idle' | 'sending' | 'sent'>('idle')
@@ -264,7 +268,8 @@ export function ContactPage() {
 
 // ------------------------------------------------------------------ Pages légales
 
-function LegalShell({ title, updated, children }: { title: string; updated?: string; children: ReactNode }) {
+function LegalShell({ path, title, updated, children }: { path: string; title: string; updated?: string; children: ReactNode }) {
+  useMeta(PAGES[path])
   return (
     <>
       <PageHead kicker="Informations légales" title={title} />
@@ -281,7 +286,7 @@ export function CgvPage() {
   const c = settings.company
   const b = settings.booking
   return (
-    <LegalShell title="Conditions de location" updated="novembre 2026">
+    <LegalShell path="/cgv" title="Conditions de location" updated="novembre 2026">
       <p>
         Les présentes conditions s’appliquent à toute location de matériel de sonorisation et d’éclairage proposée par {c.name}, {c.owner}, {c.address},{' '}
         {c.postal_code} {c.city} (SIRET {c.siret}), ci-après « le loueur ».
@@ -353,7 +358,7 @@ export function MentionsPage() {
   const { settings } = useCatalog()
   const c = settings.company
   return (
-    <LegalShell title="Mentions légales">
+    <LegalShell path="/mentions-legales" title="Mentions légales">
       <h2>Éditeur du site</h2>
       <p>
         {c.name}, {c.owner}, {c.status}
@@ -388,7 +393,7 @@ export function PrivacyPage() {
   const { settings } = useCatalog()
   const c = settings.company
   return (
-    <LegalShell title="Confidentialité" updated="novembre 2026">
+    <LegalShell path="/confidentialite" title="Confidentialité" updated="novembre 2026">
       <p>{c.name} attache de l’importance à la protection de vos données personnelles. Cette page explique quelles données sont collectées, pourquoi, et comment exercer vos droits.</p>
       <h2>Responsable du traitement</h2>
       <p>

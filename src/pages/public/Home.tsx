@@ -1,11 +1,12 @@
 import { ArrowRight, CalendarCheck, ShieldCheck, Truck } from 'lucide-react'
 import { Link } from 'react-router'
-import { useTitle } from '../../components/layout'
+import { useMeta } from '../../components/seo'
 import { DatesBar } from '../../components/catalog'
 import { PhotoMosaic } from '../../components/gallery'
 import { CategoryIcon, ProductVisual } from '../../components/ui'
 import { eur } from '../../lib/format'
 import { packStock } from '../../lib/rules'
+import { EVENT_PAGES, PAGES } from '../../lib/seo'
 import { useCatalog, useQuote } from '../../lib/store'
 
 /** Une crête alpine qui se change en onde sonore : le motif du logo, à l'échelle de la page. */
@@ -90,7 +91,7 @@ function HeroAvailability() {
 
 export default function Home() {
   const { packs, products, categories, zones, settings } = useCatalog()
-  useTitle('Location sono et éclairage en Savoie')
+  useMeta(PAGES['/'])
   const featured = packs.filter((p) => p.featured).slice(0, 3)
   const shown = featured.length ? featured : packs.slice(0, 3)
   const deposit = settings.booking.deposit_percent
@@ -160,6 +161,30 @@ export default function Home() {
                   <span className="mx-2 text-line-2">|</span>
                   <span className="font-bold">{eur(p.price_24h)}</span> <span className="text-muted">les 24 h</span>
                 </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="wrap mt-20 md:mt-28" aria-labelledby="evenements">
+        <h2 id="evenements" className="display text-[40px] md:text-[54px]">
+          Votre événement
+        </h2>
+        <p className="mt-2 max-w-xl text-muted">Le matériel conseillé, les tarifs et nos réponses aux questions fréquentes, selon votre fête.</p>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {EVENT_PAGES.map((e) => (
+            <Link key={e.path} to={e.path} className="group panel flex flex-col overflow-hidden transition-colors hover:border-bordeaux/40">
+              <div className="aspect-[16/9] overflow-hidden">
+                <ProductVisual photo={e.photo} icon="speaker" label={e.heading} />
+              </div>
+              <div className="flex flex-1 flex-col gap-2 p-5">
+                <p className="text-[13px] font-semibold text-or">{e.kicker}</p>
+                <h3 className="display text-[26px] group-hover:text-bordeaux">{e.heading}</h3>
+                <p className="text-[15px] text-muted">{e.teaser}</p>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-3 text-[15px] font-semibold text-bordeaux">
+                  Nos conseils <ArrowRight className="size-4" />
+                </span>
               </div>
             </Link>
           ))}

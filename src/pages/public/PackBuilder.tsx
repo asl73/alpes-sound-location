@@ -3,9 +3,11 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { AddControl, DatesBar, StockNote } from '../../components/catalog'
 import { PageHead } from '../../components/layout'
+import { useMeta } from '../../components/seo'
 import { ProductVisual } from '../../components/ui'
 import { eur, plural } from '../../lib/format'
 import { customDiscount, itemsTotal, unitPrice } from '../../lib/rules'
+import { PAGES } from '../../lib/seo'
 import { useCatalog, useQuote, useToast } from '../../lib/store'
 import type { Product } from '../../lib/types'
 
@@ -142,6 +144,7 @@ function PackSummary({ onContinue }: { onContinue: () => void }) {
 
 export default function PackBuilderPage() {
   const { categories, products, settings } = useCatalog()
+  useMeta(PAGES['/packs/sur-mesure'])
   const q = useQuote()
   const navigate = useNavigate()
   const formula = q.state.formula

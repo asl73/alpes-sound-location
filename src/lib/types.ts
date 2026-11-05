@@ -97,6 +97,8 @@ export interface CompanySettings {
   /** Médiateur de la consommation (obligatoire pour vendre aux particuliers) */
   mediator_name?: string
   mediator_url?: string
+  /** Lien « Laisser un avis » de la fiche Google (envoyé au client après sa location). */
+  review_url?: string
 }
 
 export interface BookingSettings {

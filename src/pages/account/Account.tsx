@@ -235,6 +235,15 @@ export function MyBookingPage() {
         <Timeline booking={b} expired={expired} />
       </div>
 
+      {b.status === 'terminee' && /^https:\/\/\S+$/i.test(settings.company.review_url?.trim() ?? '') && (
+        <Notice tone="info" title="Votre avis compte">
+          Si votre événement s’est bien passé, un avis sur Google nous aide beaucoup à nous faire connaître.{' '}
+          <a href={settings.company.review_url!.trim()} target="_blank" rel="noopener noreferrer" className="link font-semibold">
+            Laisser un avis sur Google
+          </a>
+        </Notice>
+      )}
+
       {b.status === 'demande' && (
         <Notice tone="info" title="Nous préparons votre devis">
           Nous vous envoyons le prix {settings.booking.response_delay}, par e-mail et ici. Vous réglerez ensuite en ligne l’acompte ou la totalité.

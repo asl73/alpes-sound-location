@@ -4,9 +4,11 @@ import { Link, useNavigate, useParams, useSearchParams } from 'react-router'
 import { PaymentChoice } from '../../components/booking'
 import { AddControl, DatesEditor } from '../../components/catalog'
 import { useTitle } from '../../components/layout'
+import { useMeta } from '../../components/seo'
 import { Field, Notice, ProductVisual, QtyStepper, Spinner, Toggle } from '../../components/ui'
 import { api } from '../../lib/api'
 import { eur, plural, rangeLabel } from '../../lib/format'
+import { PAGES } from '../../lib/seo'
 import { DELIVERY_HELP, EVENT_TYPES, FORMULAS, HOLD_MINUTES, deliveryLabel, unitPrice } from '../../lib/rules'
 import { useAuth, useCatalog, useQuote } from '../../lib/store'
 import type { DeliveryMode } from '../../lib/types'
@@ -14,7 +16,7 @@ import type { DeliveryMode } from '../../lib/types'
 const STEPS = ['Dates', 'Matériel', 'Livraison', 'Événement', 'Réservation'] as const
 
 export default function QuotePage() {
-  useTitle('Mon devis')
+  useMeta(PAGES['/devis'])
   const catalog = useCatalog()
   const q = useQuote()
   const { user, refresh } = useAuth()
