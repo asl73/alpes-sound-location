@@ -44,6 +44,10 @@ export function todayParis(): string {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris' }).format(new Date())
 }
 
+// Version de l'API Stripe fixée : le mode test et la production se comportent pareil, quelle que soit
+// la version par défaut de chaque compte (celle du compte de production refuse payment_method_types).
+const STRIPE_VERSION = '2026-10-28.endive'
+
 /** Appel à l'API Stripe avec la clé secrète du site. */
 export async function stripeApi(
   path: string,
@@ -53,6 +57,7 @@ export async function stripeApi(
     method: init.method ?? 'GET',
     headers: {
       Authorization: `Bearer ${env('STRIPE_SECRET_KEY')}`,
+      'Stripe-Version': STRIPE_VERSION,
       ...(init.params ? { 'Content-Type': 'application/x-www-form-urlencoded' } : {}),
       ...(init.idempotencyKey ? { 'Idempotency-Key': init.idempotencyKey } : {}),
     },

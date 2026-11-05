@@ -56,8 +56,9 @@ Deno.serve(async (req) => {
       params: {
         mode: 'payment',
         locale: 'fr',
-        // Carte uniquement : le paiement est immédiat, la réservation est confirmée aussitôt.
-        'payment_method_types[0]': 'card',
+        // Carte uniquement (Apple Pay et Google Pay compris) : le paiement est immédiat, la réservation est
+        // confirmée aussitôt. Depuis la version d'API 2026-09-30 de Stripe, payment_method_types est refusé.
+        'allowed_payment_method_types[0]': 'card',
         success_url: `${SITE_URL}/espace-client/reservations/${b.id}?paiement=ok`,
         cancel_url: `${SITE_URL}/espace-client/reservations/${b.id}?paiement=annule`,
         customer_email: b.client_email || caller.email || '',
