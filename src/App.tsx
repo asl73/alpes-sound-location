@@ -17,7 +17,7 @@ import { EVENT_PAGES } from './lib/seo'
 // L'administration n'est chargée que pour l'administrateur.
 const admin = <T extends string>(name: T) =>
   lazy(async () => {
-    const mods = await Promise.all([import('./pages/admin/Dashboard'), import('./pages/admin/Bookings'), import('./pages/admin/CatalogAdmin'), import('./pages/admin/Other')])
+    const mods = await Promise.all([import('./pages/admin/Dashboard'), import('./pages/admin/Bookings'), import('./pages/admin/CatalogAdmin'), import('./pages/admin/Other'), import('./pages/admin/Devis')])
     const all = Object.assign({}, ...mods) as Record<string, ComponentType>
     return { default: all[name] }
   })
@@ -36,6 +36,7 @@ const AdminPages = {
   Clients: admin('ClientsPage'),
   Messages: admin('MessagesPage'),
   Settings: admin('SettingsPage'),
+  Devis: admin('DevisPage'),
 }
 
 const S = (C: ComponentType) => (
@@ -131,6 +132,7 @@ const routes: RouteObject[] = [
           { path: 'clients', element: S(AdminPages.Clients) },
           { path: 'messages', element: S(AdminPages.Messages) },
           { path: 'parametres', element: S(AdminPages.Settings) },
+          { path: 'devis', element: S(AdminPages.Devis) },
         ],
       },
     ],

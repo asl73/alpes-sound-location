@@ -1,4 +1,4 @@
-import { CircleUserRound, Menu, X, ShoppingBag, LayoutDashboard, CalendarDays, Package, Boxes, Truck, Users, Mail, Settings2, ArrowLeft, Inbox, LogOut, Images } from 'lucide-react'
+import { CircleUserRound, Menu, X, ShoppingBag, LayoutDashboard, CalendarDays, Package, Boxes, Truck, Users, Mail, Settings2, ArrowLeft, Inbox, LogOut, Images, FileText } from 'lucide-react'
 import { useEffect, useState, type ReactNode } from 'react'
 import { Link, NavLink, Navigate, Outlet, useLocation, useNavigate } from 'react-router'
 import { api } from '../lib/api'
@@ -330,6 +330,7 @@ export function AccountLayout() {
 const ADMIN_NAV = [
   { to: '/admin', label: 'Tableau de bord', icon: LayoutDashboard, end: true },
   { to: '/admin/reservations', label: 'Réservations', icon: Inbox },
+  { to: '/admin/devis', label: 'Devis & Contrats', icon: FileText },
   { to: '/admin/planning', label: 'Planning', icon: CalendarDays },
   { to: '/admin/materiel', label: 'Matériel', icon: Package },
   { to: '/admin/packs', label: 'Packs', icon: Boxes },
