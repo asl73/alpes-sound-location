@@ -385,10 +385,50 @@ export function DevisPage() {
     document.body.appendChild(a); a.click(); document.body.removeChild(a)
   }
 
+  // Ajoute l'événement à l'agenda via un fichier .ics (standard iPhone / Android / Google)
+  const ajouterAgenda = (c: Doc) => {
+    const nom = `${c.client.prenom} ${c.client.nom}`.trim() || 'Client'
+    // Dates : journée(s) entière(s). En .ics, DTEND (all-day) est exclusif -> +1 jour.
+    const ymd = (d: Date) => `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`
+    const base = c.evt.debut ? new Date(c.evt.debut) : new Date()
+    const finSrc = c.evt.fin ? new Date(c.evt.fin) : base
+    const finExcl = new Date(finSrc.getTime() + 86400000) // +1 jour (DTEND exclusif)
+    const matos = c.lignes.map((l) => `${l.qte}x ${l.nom}`).join(', ')
+    const descLignes = [
+      c.client.tel ? `Tél : ${c.client.tel}` : '',
+      c.client.email ? `Email : ${c.client.email}` : '',
+      matos ? `Matériel : ${matos}` : '',
+      `Total : ${fmt(c.total)} €`,
+      `Caution : ${fmt(c.caution)} €`,
+      `${c.type === 'devis' ? 'Devis' : 'Contrat'} ${c.numero}`,
+    ].filter(Boolean).join('\n')
+    const lieu = c.evt.lieu || c.client.adresse || ''
+    // Échappement .ics : backslash, virgule, point-virgule, puis sauts de ligne en \n littéral
+    const esc = (s: string) => s.replace(/\\/g, '\\\\').replace(/([,;])/g, '\\$1').replace(/\n/g, '\\n')
+    const stamp = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+    const ics = [
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Alpes & Sound Location//Devis//FR', 'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      `UID:asl-${c.id}@alpes-sound-location.fr`,
+      `DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${ymd(base)}`,
+      `DTEND;VALUE=DATE:${ymd(finExcl)}`,
+      `SUMMARY:${esc('ASL — ' + nom)}`,
+      `DESCRIPTION:${esc(descLignes)}`,
+      lieu ? `LOCATION:${esc(lieu)}` : '',
+      'END:VEVENT', 'END:VCALENDAR',
+    ].filter(Boolean).join('\r\n')
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a'); a.href = url; a.download = `ASL-${nom.replace(/\s+/g, '-')}-${c.numero}.ics`
+    document.body.appendChild(a); a.click(); document.body.removeChild(a)
+    setTimeout(() => URL.revokeObjectURL(url), 5000)
+  }
+
   // ---- Rendu ----
   if (apercu) return <Apercu c={apercu} sigLoueur={sigLoueur} onBack={() => setApercu(null)}
     onSign={(img) => { const u = { ...apercu, sigClient: img }; setApercu(u); setContrats((cs) => cs.map((x) => (x.id === u.id ? u : x))) }}
-    onPDF={() => telechargerPDF(apercu)} onEmail={() => preparerEmail(apercu)} />
+    onPDF={() => telechargerPDF(apercu)} onEmail={() => preparerEmail(apercu)} onAgenda={() => ajouterAgenda(apercu)} />
 
   const devis = f.type === 'devis'
   return (
@@ -575,8 +615,8 @@ function Historique({ contrats, q, setQ, filtre, setFiltre, onOpen, onReprendre,
   )
 }
 
-function Apercu({ c, sigLoueur, onBack, onSign, onPDF, onEmail }: {
-  c: Doc; sigLoueur: string | null; onBack: () => void; onSign: (img: string | null) => void; onPDF: () => void; onEmail: () => void
+function Apercu({ c, sigLoueur, onBack, onSign, onPDF, onEmail, onAgenda }: {
+  c: Doc; sigLoueur: string | null; onBack: () => void; onSign: (img: string | null) => void; onPDF: () => void; onEmail: () => void; onAgenda: () => void
 }) {
   const devis = c.type === 'devis'
   const dateValidite = devis && c.dateISO ? new Date(new Date(c.dateISO).getTime() + (c.validite || 30) * 86400000).toLocaleDateString('fr-FR') : null
@@ -586,6 +626,7 @@ function Apercu({ c, sigLoueur, onBack, onSign, onPDF, onEmail }: {
       <div className="mb-4 flex flex-wrap gap-2.5">
         <button type="button" className="btn btn-primary" onClick={onPDF}>⬇️ {estMobile ? 'PDF (Partager / Enregistrer)' : 'Télécharger le PDF'}</button>
         <button type="button" className="btn btn-gold" onClick={onEmail}>✉️ Email au client</button>
+        <button type="button" className="btn btn-ghost" onClick={onAgenda}>📅 Ajouter à mon agenda</button>
         <button type="button" className="btn btn-ghost" onClick={onBack}>◂ Retour</button>
       </div>
       {!c.client.email && <div className="mb-4 rounded-[10px] border border-or bg-amber-50 px-4 py-3 text-sm text-amber-900">⚠️ Pas d'email pour ce client : l'email s'ouvrira sans destinataire.</div>}
